@@ -19,12 +19,19 @@ def get_profile(request):
 @api_view(['POST'])
 @permission_classes([])
 def create_user(request):
-    serializer = UserSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    else:
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    user = User.objects.create(
+        username = request.data['username'],
+        password = request.data['password']
+    )
+    user.save()
+    profile = Profile.objects.create(
+        user = user,
+        first_name = request.data['first_name'],
+        last_name = request.data['last_name']
+    )
+    profile.save()
+    profile_serialized = ProfileSerializer(profile)
+    return Response(profile_serialized.data)
 
 
 @api_view(['POST'])

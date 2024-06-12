@@ -96,8 +96,8 @@ STORAGES = {
 
 CORS_ALLOWED_ORIGINS = [
 'http://localhost:8080',
-'https://court-connect-client.vercel.app',
-'https://court-connect-client-bg2z555u4-owen-coombs-projects.vercel.app'
+'https://court-connect-client2.vercel.app',
+'https://court-connect-client2-eesqrhrs7-owen-coombs-projects.vercel.app'
 ]
 
 
@@ -113,7 +113,7 @@ CORS_ALLOW_METHODS = [
 CORS_ALLOW_HEADERS = [
     'Content-Type',
     'Authorization',
-    'authentication',
+
 ]
 
 REST_FRAMEWORK = {
