@@ -15,7 +15,10 @@ class CourtsAdmin(admin.ModelAdmin):
     list_filter = ('location',)  # Add location as a filter option
 
 
+class ActivityAdmin(admin.ModelAdmin):
+   pass
 
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Image, ImageAdmin)
 admin.site.register(Courts, CourtsAdmin)
+admin.site.register(Activity, ActivityAdmin)

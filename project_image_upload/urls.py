@@ -5,6 +5,8 @@ from rest_framework_simplejwt.views import (
   TokenRefreshView,
 )
 from app_image_upload.views import *
+from django.conf import settings
+from app_image_upload.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -18,4 +20,14 @@ urlpatterns = [
     path('create-court', create_court),
     path('set-active-user', set_active_user),
     path('get-active-users', get_active_users),
+    path('get-images/<int:pk>/delete/', delete_post, name='delete_post'),
+    path('get-images/', get_images),
+    path('get-court-reviews/<int:pk>/', get_court_reviews),
+    path('create-review/<int:pk>/', add_court_review),
+
 ]
+
+
+if settings.DEBUG:
+  from django.conf.urls.static import static
+  urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
